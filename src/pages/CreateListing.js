@@ -69,7 +69,7 @@ function CreateListing(){
             return;
         }
 
-        let geolocation = {}
+        let geoLocation = {}
         let location;
         
         if(geolocationEnabled){
@@ -82,8 +82,8 @@ function CreateListing(){
 
                 console.log(data);
     
-                geolocation.lat = data.results[0]?.geometry.location.lat ?? 0
-                geolocation.lng = data.results[0]?.geometry.location.lng ?? 0
+                geoLocation.lat = data.results[0]?.geometry.location.lat ?? 0
+                geoLocation.lng = data.results[0]?.geometry.location.lng ?? 0
     
                 location = data.status === "ZERO_RESULTS" ? undefined : data.results[0]?.formtted_address;
     
@@ -99,8 +99,8 @@ function CreateListing(){
 
 
         }else{
-            geolocation.lat = latitude;
-            geolocation.lng = longitude;
+            geoLocation.lat = latitude;
+            geoLocation.lng = longitude;
         }
 
         // Store images in firebase
@@ -153,7 +153,7 @@ function CreateListing(){
         const formDataCopy = {
             ...formData,
             imageUrls,
-            geolocation,
+            geoLocation,
             timestamp:serverTimestamp(),
         }
 
